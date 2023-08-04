@@ -4,6 +4,7 @@ from admin_notification.cache import del_cached_active_item
 from django.db import models
 from django.db.models.signals import post_delete, post_save, pre_save
 from six import python_2_unicode_compatible
+from django.contrib.contenttypes.models import ContentType
 
 
 @python_2_unicode_compatible
@@ -57,19 +58,15 @@ class Notification(models.Model):
             obj.set_active()
 
         return obj
+
+    model = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     count = models.IntegerField(default=0)
     active = models.BooleanField(default=True)
 
-
-
-
     def __str__(self):
-        return "notifications"
-
-
+        return f"{self.model.name} notifications"
 
 
 post_delete.connect(Notification.post_delete_handler, sender=Notification)
 post_save.connect(Notification.post_save_handler, sender=Notification)
 pre_save.connect(Notification.pre_save_handler, sender=Notification)
-

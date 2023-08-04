@@ -6,6 +6,9 @@ django-admin-notification is a Django app to display notification in Django admi
 ```python
 INSTALLED_APPS = (
     #...
+    # IF DID NOT EXIST
+    "django.contrib.contenttypes",
+    #...
     "admin_notification",
     #...
     "django.contrib.admin",
