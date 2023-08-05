@@ -1,6 +1,7 @@
-from setuptools import find_packages, setup
+import os
+import sys
 
-import os, sys
+from setuptools import find_packages, setup
 
 exec(open("admin_notification/version.py").read())
 

@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect
-from admin_notification.models import Notification
 from django.conf import settings
 from django.contrib import admin
+from django.shortcuts import redirect, render
+
+from admin_notification.models import Notification
+
 
 def check_notification_view(request):
     instance = Notification.objects.all().first()
