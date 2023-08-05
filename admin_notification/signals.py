@@ -1,11 +1,6 @@
-from django.apps import apps as django_apps
-from django.apps.registry import Apps
 from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import ImproperlyConfigured
-from django.db.models.signals import post_delete, post_save, pre_save
+from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.shortcuts import HttpResponse, redirect, render
-
 from admin_notification.conf import custom_settings
 from admin_notification.models import Notification
 
