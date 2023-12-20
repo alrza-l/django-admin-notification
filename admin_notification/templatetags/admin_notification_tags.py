@@ -1,5 +1,6 @@
 import django
 from django import template
+
 from admin_notification.models import Notification
 from admin_notification.serializers import NotificationsSerializer
 

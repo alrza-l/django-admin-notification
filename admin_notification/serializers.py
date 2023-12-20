@@ -1,5 +1,6 @@
-from admin_notification.models import Notification
 from django.db.models import Sum
+
+from admin_notification.models import Notification
 
 
 class NotificationsSerializer:

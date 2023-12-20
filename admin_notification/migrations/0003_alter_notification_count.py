@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('admin_notification', '0002_notification_active'),
+        ("admin_notification", "0002_notification_active"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='notification',
-            name='count',
+            model_name="notification",
+            name="count",
             field=models.IntegerField(default=0),
         ),
     ]

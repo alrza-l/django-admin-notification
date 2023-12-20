@@ -1,6 +1,7 @@
-from setuptools import find_packages, setup
+import os
+import sys
 
-import os, sys
+from setuptools import find_packages, setup
 
 exec(open("admin_notification/version.py").read())
 
@@ -36,11 +37,7 @@ setup(
         "Documentation": "{}#readme".format(package_url),
         "Issues": "{}/issues".format(package_url),
     },
-    keywords=[
-        "django",
-        "admin",
-        "notification"
-    ],
+    keywords=["django", "admin", "notification"],
     requires=["django(>=1.7)"],
     install_requires=[
         "six >= 1.9.0, < 2.0.0",
