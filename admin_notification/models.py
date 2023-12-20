@@ -1,11 +1,7 @@
 from __future__ import unicode_literals
 
-from functools import cached_property
-
-from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
-from django.db.models.signals import post_delete, post_save, pre_save
 from django.urls import reverse
 from six import python_2_unicode_compatible
 

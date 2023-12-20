@@ -1,6 +1,4 @@
-from django.conf import settings
-from django.contrib import admin
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.urls import reverse
 
 from admin_notification.models import Notification
