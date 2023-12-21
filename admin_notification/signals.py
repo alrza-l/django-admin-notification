@@ -9,7 +9,6 @@ from admin_notification.models import Notification
 
 def post_save_handler(sender, instance, **kwargs):
     if kwargs["created"]:
-        print("called1")
         model_ct = ContentType.objects.get_for_model(sender)
         notification, _ = Notification.objects.get_or_create(model=model_ct)
         notification.count += 1

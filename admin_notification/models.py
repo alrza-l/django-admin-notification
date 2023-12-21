@@ -42,8 +42,6 @@ class Notification(models.Model):
         data["count"] = sum(
             value["count"] for key, value in data.items() if key != "count"
         )
-        print(data, self.count)
-        print(f'{data["count"]} += {self.count} - {data[self.model]["count"]}')
         Notification.set_cache_data(data)
         return data
 

@@ -14,7 +14,6 @@ class NotificationsSerializer:
         data_ = Notification.get_cache_data()
         if data_ != dict():
             return data_
-        print(data_)
         count = self.query_set.aggregate(count_sum=Sum("count"))
         result = {
             x.model: {
