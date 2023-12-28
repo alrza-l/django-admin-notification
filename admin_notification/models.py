@@ -1,18 +1,36 @@
 from __future__ import unicode_literals
 
+from django.conf import settings
+from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 from six import python_2_unicode_compatible
 
 from admin_notification.constants import APP_CACHE, NOTIFICATIONS_CACHE_KEY
+from admin_notification.enums import ActionChoices
 
 
 @python_2_unicode_compatible
 class Notification(models.Model):
-    count = models.IntegerField(default=0)
-    active = models.BooleanField(default=True)
+    action_time = models.DateTimeField(default=timezone.now, editable=False)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        models.CASCADE,
+    )
+    action = models.CharField(
+        default=ActionChoices.CREATE, choices=ActionChoices.choices, max_length=6
+    )
     model = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.TextField()
+    model_object = GenericForeignKey("model", "object_id")
+    action_message = models.TextField()
+
+    class Meta:
+        indexes = [
+            models.Index(fields=["model", "object_id"]),
+        ]
 
     def get_admin_link(self):
         app_label = self.model.app_label
