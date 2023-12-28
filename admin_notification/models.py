@@ -9,7 +9,8 @@ from django.utils import timezone
 from six import python_2_unicode_compatible
 
 from admin_notification.constants import APP_CACHE, NOTIFICATIONS_CACHE_KEY
-from admin_notification.enums import ActionChoices
+from admin_notification.enums import ActionsEnum
+from admin_notification.settings import *
 
 
 @python_2_unicode_compatible
@@ -20,7 +21,7 @@ class Notification(models.Model):
         models.CASCADE,
     )
     action = models.CharField(
-        default=ActionChoices.CREATE, choices=ActionChoices.choices, max_length=6
+        default=ActionsEnum.CREATE, choices=ActionsEnum.choices, max_length=6
     )
     model = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.TextField()
