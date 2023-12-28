@@ -20,6 +20,8 @@ echo "Running isort and black on all Python files..."
 
 changed_files=$(git diff --name-only --cached --diff-filter=d -- "*.py")
 
-isort $changed_files
-black $changed_files
-git add $changed_files
+if ! [ -z "$name" ]; then
+    isort $changed_files
+    black $changed_files
+    git add $changed_files
+fi
